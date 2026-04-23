@@ -9,12 +9,13 @@ const {
   updateUserProfile,
 } = require('../controllers/userController');
 const { protect, admin } = require('../middleware/authMiddleware');
+const dbCheck = require('../middleware/dbCheck');
 
-router.get('/wishlist', protect, getWishlist);
-router.put('/wishlist/:productId', protect, toggleWishlist);
-router.put('/profile', protect, updateUserProfile);
-router.get('/', protect, admin, getAllUsers);
-router.get('/:id', protect, admin, getUserById);
-router.delete('/:id', protect, admin, deleteUser);
+router.get('/wishlist', dbCheck, protect, getWishlist);
+router.put('/wishlist/:productId', dbCheck, protect, toggleWishlist);
+router.put('/profile', dbCheck, protect, updateUserProfile);
+router.get('/', dbCheck, protect, admin, getAllUsers);
+router.get('/:id', dbCheck, protect, admin, getUserById);
+router.delete('/:id', dbCheck, protect, admin, deleteUser);
 
 module.exports = router;

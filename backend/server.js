@@ -10,9 +10,6 @@ const productRoutes = require('./routes/productRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 const userRoutes = require('./routes/userRoutes');
 
-// Connect to database
-connectDB();
-
 const app = express();
 
 // Middleware
@@ -24,8 +21,27 @@ app.use(cors({
 }));
 app.use(express.json());
 
+// Connect to database
+let dbConnected = false;
+connectDB().then(() => {
+  dbConnected = true;
+  console.log('✅ Database connection established');
+}).catch(err => {
+  console.error('❌ Database connection failed:', err.message);
+  dbConnected = false;
+});
+
 // Serve static files from frontend build
 app.use(express.static(path.join(__dirname, '../frontend/dist')));
+
+// Health check endpoint
+app.get('/api/health', (req, res) => {
+  res.json({ 
+    status: 'ok', 
+    database: dbConnected ? 'connected' : 'disconnected',
+    environment: process.env.NODE_ENV || 'development'
+  });
+});
 
 // Routes
 app.use('/api/auth', authRoutes);

@@ -10,13 +10,14 @@ const {
   addReview,
 } = require('../controllers/productController');
 const { protect, admin } = require('../middleware/authMiddleware');
+const dbCheck = require('../middleware/dbCheck');
 
-router.get('/featured', getFeaturedProducts);
-router.get('/', getProducts);
-router.get('/:id', getProductById);
-router.post('/', protect, admin, createProduct);
-router.put('/:id', protect, admin, updateProduct);
-router.delete('/:id', protect, admin, deleteProduct);
-router.post('/:id/review', protect, addReview);
+router.get('/featured', dbCheck, getFeaturedProducts);
+router.get('/', dbCheck, getProducts);
+router.get('/:id', dbCheck, getProductById);
+router.post('/', dbCheck, protect, admin, createProduct);
+router.put('/:id', dbCheck, protect, admin, updateProduct);
+router.delete('/:id', dbCheck, protect, admin, deleteProduct);
+router.post('/:id/review', dbCheck, protect, addReview);
 
 module.exports = router;

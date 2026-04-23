@@ -8,6 +8,7 @@ import './Products.css';
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [search, setSearch] = useState('');
   const [category, setCategory] = useState('');
   const [sort, setSort] = useState('');
@@ -17,6 +18,7 @@ const Products = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       setLoading(true);
+      setError(null);
       try {
         const queryParams = new URLSearchParams();
         if (search) queryParams.append('keyword', search);
@@ -27,6 +29,8 @@ const Products = () => {
         setProducts(data.products);
       } catch (error) {
         console.error('Failed to fetch products', error);
+        setError('Failed to load products. Please try again later.');
+        setProducts([]);
       } finally {
         setLoading(false);
       }

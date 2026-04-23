@@ -32,7 +32,12 @@ const getProducts = async (req, res) => {
 
     res.json({ products, total, page: Number(page), pages: Math.ceil(total / limit) });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error('Error in getProducts:', error);
+    res.status(500).json({ 
+      message: 'Failed to fetch products',
+      error: error.message,
+      stack: process.env.NODE_ENV === 'production' ? undefined : error.stack
+    });
   }
 };
 
@@ -57,8 +62,12 @@ const getFeaturedProducts = async (req, res) => {
     const products = await Product.find({ isFeatured: true }).limit(8);
     res.json(products);
   } catch (error) {
-    console.error('Error fetching featured products:', error);
-    res.status(500).json({ message: 'Failed to fetch featured products', error: error.message });
+    console.error('Error fetching featured products:', error.message);
+    res.status(500).json({ 
+      message: 'Failed to fetch featured products', 
+      error: error.message,
+      hint: 'Please check if MongoDB connection is configured'
+    });
   }
 };
 
