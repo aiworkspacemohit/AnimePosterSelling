@@ -1,0 +1,79 @@
+.contact-page {
+  padding-top: 100px;
+}
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+  margin-top: 60px;
+  align-items: center;
+}
+
+.contact-header {
+  margin-bottom: 50px;
+}
+
+.contact-title {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-family: 'Oswald', sans-serif;
+  line-height: 0.9;
+  text-transform: uppercase;
+  color: var(--bg-dark);
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.info-item h4 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.info-item p {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.contact-form-container {
+  background-color: var(--bg-white);
+  border: var(--border-width) solid var(--bg-dark);
+  border-radius: var(--radius-md);
+  padding: 50px;
+  box-shadow: var(--shadow-lg);
+}
+
+.contact-form-container h3 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 2rem;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+
+.submit-btn {
+  width: 100%;
+  padding: 18px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 992px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+}

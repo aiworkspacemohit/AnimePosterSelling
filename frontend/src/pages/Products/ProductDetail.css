@@ -1,0 +1,178 @@
+.product-detail-page {
+  padding-top: 100px;
+}
+
+.breadcrumb {
+  margin-bottom: 40px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  display: flex;
+  gap: 10px;
+}
+
+.breadcrumb a:hover {
+  color: var(--accent);
+}
+
+.product-main {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 60px;
+  margin-bottom: 100px;
+}
+
+.product-gallery {
+  position: relative;
+}
+
+.main-image {
+  width: 100%;
+  height: 700px;
+  object-fit: cover;
+  border-radius: var(--radius-leaf);
+  border: var(--border-width) solid var(--bg-dark);
+  box-shadow: var(--shadow-lg);
+}
+
+.product-info-panel {
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.category-tag {
+  color: var(--bg-dark);
+  background-color: var(--accent);
+  display: inline-block;
+  padding: 5px 15px;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  border: var(--border-width) solid var(--bg-dark);
+  width: fit-content;
+  margin-bottom: 20px;
+  border-radius: var(--radius-sm);
+}
+
+.detail-title {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-family: 'Oswald', sans-serif;
+  line-height: 1;
+  color: var(--bg-dark);
+  margin-bottom: 30px;
+}
+
+.detail-rating {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+.detail-price {
+  font-family: 'Oswald', sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.detail-desc {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  font-weight: 500;
+  margin-bottom: 50px;
+  max-width: 550px;
+}
+
+.detail-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 60px;
+}
+
+.action-row {
+  display: flex;
+  gap: 20px;
+}
+
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  border: var(--border-width) solid var(--bg-dark);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  background-color: var(--bg-white);
+}
+
+.quantity-selector button {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 800;
+  transition: 0.2s ease;
+}
+
+.quantity-selector button:hover {
+  background-color: var(--bg-dark);
+  color: var(--bg-white);
+}
+
+.quantity-selector span {
+  width: 40px;
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.buy-btn {
+  flex-grow: 1;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.2rem;
+}
+
+.trust-badges {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  border-top: var(--border-width) solid var(--bg-dark);
+  padding-top: 40px;
+}
+
+.badge-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.related-products {
+  padding: 100px 0;
+  border-top: var(--border-width) solid var(--bg-dark);
+}
+
+.section-title {
+  font-size: 3rem;
+  font-family: 'Oswald', sans-serif;
+  margin-bottom: 60px;
+}
+
+@media (max-width: 1200px) {
+  .product-main {
+    grid-template-columns: 1fr;
+  }
+  
+  .main-image {
+    height: 500px;
+  }
+}
