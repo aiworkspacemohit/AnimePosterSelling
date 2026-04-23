@@ -1,7 +1,23 @@
 import axios from 'axios';
 
+// Determine API base URL based on environment
+const getBaseURL = () => {
+  // If VITE_API_URL is explicitly set, use it
+  if (import.meta.env.VITE_API_URL) {
+    return import.meta.env.VITE_API_URL;
+  }
+  
+  // In development, use localhost
+  if (import.meta.env.DEV) {
+    return 'http://localhost:5000/api';
+  }
+  
+  // In production, use relative path (same domain)
+  return '/api';
+};
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api',
+  baseURL: getBaseURL(),
 });
 
 // Add token to headers if it exists

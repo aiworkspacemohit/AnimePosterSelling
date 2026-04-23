@@ -57,7 +57,8 @@ const getFeaturedProducts = async (req, res) => {
     const products = await Product.find({ isFeatured: true }).limit(8);
     res.json(products);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error('Error fetching featured products:', error);
+    res.status(500).json({ message: 'Failed to fetch featured products', error: error.message });
   }
 };
 
